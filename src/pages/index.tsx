@@ -1,9 +1,8 @@
 import { NextSeo, SiteLinksSearchBoxJsonLd } from "next-seo";
 import type { GetStaticProps } from "next";
-
 import storeConfig from "../../store.config";
 
-function Page() {
+export default function Page() {
   return (
     <>
       {/* SEO */}

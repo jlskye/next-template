@@ -3,7 +3,7 @@
  */
 import type { AnalyticsEvent } from '@faststore/sdk'
 
-import config from '../../../../../store.config'
+import config from '../../../../store.config'
 import type {
   IntelligentSearchQueryEvent,
   SearchSelectItemEvent,
