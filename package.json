@@ -1,53 +1,18 @@
 {
   "private": true,
+  "name": "my-workspace",
+  "workspaces": ["app", "packages/*"],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "vitest src",
-    "test:cov": "vitest run --coverage src",
-    "lint": "next lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
     "postinstall": "husky install"
   },
-  "dependencies": {
-    "@faststore/api": "^1.12.42",
-    "@faststore/sdk": "^1.12.37",
-    "@vtex/client-cms": "^0.2.14",
-    "next": "latest",
-    "next-seo": "^6.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.12",
-    "@storybook/addon-interactions": "^7.0.12",
-    "@storybook/addon-links": "^7.0.12",
-    "@storybook/blocks": "^7.0.12",
-    "@storybook/nextjs": "^7.0.13",
-    "@storybook/react": "^7.0.12",
-    "@svgr/webpack": "^8.0.1",
-    "@testing-library/react": "^14.0.0",
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
-    "@vitejs/plugin-react": "^4.0.0",
-    "@vitest/coverage-c8": "^0.31.1",
     "eslint": "^8.41.0",
-    "eslint-config-next": "13.4.3",
-    "eslint-config-prettier": "^8.8.0",
-    "happy-dom": "^9.20.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
-    "msw": "^1.2.1",
-    "prettier": "^2.8.8",
-    "storybook": "^7.0.12",
-    "typescript": "^5.0.4",
-    "url-loader": "^4.1.1",
-    "vitest": "^0.31.1"
-  },
-  "msw": {
-    "workerDirectory": "public"
+    "prettier": "^2.8.8"
   },
   "engines": {
     "node": ">=18"
