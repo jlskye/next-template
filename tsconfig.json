@@ -10,37 +10,20 @@
     "baseUrl": "./",
     "noEmit": true,
     "paths": {
-      "src/*": [
-        "src/*"
-      ],
-      "@generated/*": [
-        "@generated/*"
-      ]
+      "src/*": ["src/*"],
+      "@generated/*": ["@generated/*"]
     },
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/types"
-    ],
+    "types": ["vitest/globals"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "forceConsistentCasingInFileNames": true,
     "strict": false,
     "incremental": true,
     "isolatedModules": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true
   },
-  "include": [
-    "src/**/*.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "public"
-  ]
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "public"]
 }

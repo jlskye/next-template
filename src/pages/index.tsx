@@ -27,7 +27,9 @@ export default function Page() {
           },
         ]}
       />
-      Hello World
+      <main>
+        <h1>Hello World</h1>
+      </main>
     </>
   );
 }
