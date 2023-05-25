@@ -2,7 +2,7 @@
   "private": true,
   "name": "my-workspace",
   "workspaces": [
-    "app",
+    "apps/*",
     "packages/*"
   ],
   "scripts": {
