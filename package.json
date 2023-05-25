@@ -1,7 +1,10 @@
 {
   "private": true,
   "name": "my-workspace",
-  "workspaces": ["app", "packages/*"],
+  "workspaces": [
+    "app",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,7 +15,8 @@
     "eslint": "^8.41.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "nx": "16.2.2"
   },
   "engines": {
     "node": ">=18"

@@ -1,6 +1,7 @@
 import { NextSeo, SiteLinksSearchBoxJsonLd } from "next-seo";
 import type { GetStaticProps } from "next";
 import storeConfig from "../../store.config";
+import { Button } from "ui-components";
 
 export default function Page() {
   return (
@@ -29,6 +30,7 @@ export default function Page() {
       />
       <main>
         <h1>Hello World</h1>
+        <Button label={"test"} />
       </main>
     </>
   );
