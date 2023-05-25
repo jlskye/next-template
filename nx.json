@@ -1,0 +1,44 @@
+{
+  "workspaceLayout": {
+    "appsDir": "app",
+    "libsDir": "packages"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "test",
+          "test:cov",
+          "lint",
+          "build-storybook"
+        ]
+      }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "{projectRoot}/app/.next"
+      ]
+    },
+    "test:cov": {
+      "outputs": [
+        "{projectRoot}/app/coverage",
+        "{projectRoot}/packages/ui-components/coverage"
+      ]
+    },
+    "build-storybook": {
+      "outputs": [
+        "{projectRoot}/packages/ui-components/storybook-static"
+      ]
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

@@ -6,9 +6,15 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "npx nx dev web-app",
+    "dev:lib": "npx nx dev ui-components",
+    "test:app": "npx nx test web-app",
+    "test:cov:app": "npx nx test:cov web-app",
+    "test:lib": "npx nx test ui-components",
+    "test:cov:lib": "npx nx test:cov ui-components",
+    "build:app": "npx nx build web-app --verbose",
+    "build:all": "npx nx run-many -t build",
+    "lint": "npx nx run-many -t lint",
     "postinstall": "husky install"
   },
   "devDependencies": {
@@ -20,14 +26,5 @@
   },
   "engines": {
     "node": ">=18"
-  },
-  "lint-staged": {
-    "*.{ts,js,tsx,jsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.json": [
-      "prettier --write"
-    ]
   }
 }

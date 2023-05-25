@@ -9,10 +9,10 @@
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "node",
+    "types": ["vitest/globals"],
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

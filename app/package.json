@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "web-app",
   "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
@@ -7,7 +7,8 @@
     "start": "next start",
     "test": "vitest src",
     "test:cov": "vitest run --coverage src",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@faststore/api": "^1.12.42",

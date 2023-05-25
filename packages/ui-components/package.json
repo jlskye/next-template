@@ -12,11 +12,11 @@
   ],
   "types": "./dist/index.d.ts",
   "scripts": {
+    "dev": "storybook dev -p 6006",
     "build": "tsup",
     "test": "vitest src",
     "test:cov": "vitest run --coverage src",
-    "lint": "next lint",
-    "storybook": "storybook dev -p 6006",
+    "lint": "eslint src/**/*.{ts,tsx} --fix",
     "build-storybook": "storybook build"
   },
   "peerDependencies": {
@@ -38,7 +38,6 @@
     "@vitest/coverage-c8": "^0.31.1",
     "esbuild-plugin-svgr": "^2.0.0",
     "eslint": "^8.41.0",
-    "eslint-config-next": "13.4.3",
     "eslint-config-prettier": "^8.8.0",
     "happy-dom": "^9.20.3",
     "prettier": "^2.8.8",
@@ -47,5 +46,14 @@
     "typescript": "^5.0.4",
     "url-loader": "^4.1.1",
     "vitest": "^0.31.1"
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
   }
 }
