@@ -1,3 +1,9 @@
+import { ClientButton } from "ui-components/client";
+
 export default async function IndexPage() {
-  return <div>Hello world</div>;
+  return (
+    <div>
+      <ClientButton label={"test"}/>
+    </div>
+  );
 }

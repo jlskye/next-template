@@ -1,19 +1,31 @@
 {
   "name": "ui-components",
   "version": "1.0.0",
-  "exports": {
-    ".": "./dist/index.js",
-    "./style.css": "./dist/index.css"
-  },
   "type": "module",
+  "exports": {
+    "./server": "./dist/server/index.js",
+    "./client": "./dist/client/index.js",
+    "./client.css": "./dist/client/index.css",
+    "./server.css": "./dist/server/index.css"
+  },
+  "typesVersions": {
+    "*": {
+      "client": [
+        "./dist/client/index.d.ts"
+      ],
+      "server": [
+        "./dist/server/index.d.ts"
+      ]
+    }
+  },
   "sideEffects": false,
   "files": [
     "dist"
   ],
-  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "tsup",
+    "postbuild": "node postbuild.js",
     "test": "vitest src",
     "test:cov": "vitest run --coverage src",
     "lint": "eslint src/**/*.{ts,tsx} --fix",
@@ -24,28 +36,28 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.12",
-    "@storybook/addon-interactions": "^7.0.12",
-    "@storybook/addon-links": "^7.0.12",
-    "@storybook/addon-mdx-gfm": "^7.0.12",
-    "@storybook/react-vite": "^7.0.12",
+    "@storybook/addon-essentials": "^7.0.20",
+    "@storybook/addon-interactions": "^7.0.20",
+    "@storybook/addon-links": "^7.0.20",
+    "@storybook/addon-mdx-gfm": "^7.0.20",
+    "@storybook/react-vite": "^7.0.20",
     "@testing-library/react": "^14.0.0",
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
     "@vitejs/plugin-react": "^4.0.0",
-    "@vitest/coverage-c8": "^0.31.1",
+    "@vitest/coverage-c8": "^0.32.0",
     "esbuild-plugin-svgr": "^2.0.0",
-    "eslint": "^8.41.0",
+    "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "happy-dom": "^9.20.3",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.0.12",
-    "tsup": "^6.7.0",
-    "typescript": "^5.0.4",
+    "storybook": "^7.0.20",
+    "tsup": "^7.0.0",
+    "typescript": "^5.1.3",
     "url-loader": "^4.1.1",
-    "vitest": "^0.31.1"
+    "vitest": "^0.32.0"
   },
   "lint-staged": {
     "*.{ts,js,tsx,jsx}": [

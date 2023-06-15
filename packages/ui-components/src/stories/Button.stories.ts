@@ -1,16 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { Button } from "../Button";
+import { ClientButton } from "../client";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Example/Button",
-  component: Button,
+  title: "Example/ClientButton",
+  component: ClientButton,
   tags: ["autodocs"],
   argTypes: {
     backgroundColor: { control: "color" },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof ClientButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

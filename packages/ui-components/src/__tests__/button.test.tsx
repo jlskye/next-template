@@ -1,9 +1,9 @@
-import { Button } from "../Button";
+import { ClientButton } from "../client/ClientButton";
 import { render, screen, within } from "@testing-library/react";
 
 describe("button", () => {
   it("should render without crashing", () => {
-    render(<Button label={"test"} />);
+    render(<ClientButton label={"test"} />);
     const button = within(screen.getByRole("button"));
 
     expect(button.findByText(/test/)).toBeDefined();
