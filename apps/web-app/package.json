@@ -14,7 +14,6 @@
     "@faststore/sdk": "^2.1.9",
     "@vtex/client-cms": "^0.2.14",
     "next": "latest",
-    "next-seo": "^6.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "swr": "^2.1.5",
