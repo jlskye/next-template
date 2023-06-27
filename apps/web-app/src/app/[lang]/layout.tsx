@@ -1,6 +1,7 @@
 import { Metadata, ResolvingMetadata } from "next";
 import "ui-components/client.css";
 import "ui-components/server.css";
+import ThemeRegistry from "src/components/theme/ThemeRegistry";
 
 type Props = {
   params: { lang: string };
@@ -38,9 +39,16 @@ export async function generateMetadata({ params, searchParams }: Props, parent?:
 
 export default function Root({ children, params: { lang } }: { children: React.ReactNode; params: { lang: string } }) {
   console.log(lang);
+
   return (
     <html>
-      <body>{children}</body>
+      <head>
+        <title>test</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </head>
+      <body>
+        <ThemeRegistry>{children}</ThemeRegistry>
+      </body>
     </html>
   );
 }
