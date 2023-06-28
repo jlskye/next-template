@@ -1,10 +1,11 @@
 import * as React from "react";
-import Badge, { BadgeProps } from "@mui/material/Badge";
+import { Badge as MuiBadge } from "@mui/material";
+import { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+const StyledBadge = styled(MuiBadge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
     top: 13,
@@ -13,7 +14,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   },
 }));
 
-export default function CustomizedBadges(props: BadgeProps) {
+export const Badge = (props: BadgeProps) => {
   return (
     <IconButton aria-label="cart">
       <StyledBadge badgeContent={4} color="secondary" {...props}>
@@ -21,4 +22,4 @@ export default function CustomizedBadges(props: BadgeProps) {
       </StyledBadge>
     </IconButton>
   );
-}
+};

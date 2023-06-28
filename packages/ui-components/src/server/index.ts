@@ -1,1 +1,1 @@
-export { ServerButton } from "./ServerButton";
+export const nothing = "nothing yet";

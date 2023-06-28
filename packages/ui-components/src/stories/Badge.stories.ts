@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import CustomizedBadges from "../server/Badge";
+import { Badge } from "src/client";
 
 const meta = {
-  title: "Server/Badge",
-  component: CustomizedBadges,
+  title: "Client/Badge",
+  component: Badge,
   tags: ["autodocs"],
-} satisfies Meta<typeof CustomizedBadges>;
+} satisfies Meta<typeof Badge>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

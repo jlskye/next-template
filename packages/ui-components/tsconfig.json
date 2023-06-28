@@ -13,7 +13,12 @@
     "skipLibCheck": true,
     "target": "ESNext",
     "strict": true,
-    "noEmit": true
+    "noEmit": true,
+    "rootDir": "./",
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"]
+    }
   },
   "include": ["src"]
 }
