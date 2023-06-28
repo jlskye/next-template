@@ -1,4 +1,5 @@
 export { ThemeProvider, createTheme } from "@mui/material/styles";
+export { defaultTheme } from "./theme";
 export { default } from "@mui/material/CssBaseline";
 
 export { Button } from "./Button";

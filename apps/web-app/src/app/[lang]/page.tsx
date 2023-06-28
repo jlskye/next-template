@@ -1,9 +1,9 @@
-import { ClientButton } from "ui-components/client";
+import { Button } from "ui-components/client";
 
 export default async function IndexPage() {
   return (
     <div>
-      <ClientButton label={"test"} />
+      <Button label={"test"} variant={"contained"} />
     </div>
   );
 }

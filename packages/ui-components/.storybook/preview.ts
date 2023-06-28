@@ -6,7 +6,7 @@ import "@fontsource/roboto/700.css";
 import "@fontsource/material-icons";
 import { withThemeFromJSXProvider } from "@storybook/addon-styling";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import defaultTheme from "../src/client/theme";
+import { defaultTheme } from "../src/client/theme";
 
 const preview: Preview = {
   parameters: {

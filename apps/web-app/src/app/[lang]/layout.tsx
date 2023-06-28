@@ -1,6 +1,4 @@
 import { Metadata, ResolvingMetadata } from "next";
-import "ui-components/client.css";
-import "ui-components/server.css";
 import ThemeRegistry from "src/components/theme/ThemeRegistry";
 
 type Props = {
