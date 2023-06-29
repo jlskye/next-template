@@ -1,7 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 
-// When needed::: first argument is needed if you have common enterprise theme, and second argument is to override your enterprise theme.
-// apply fonts to all other typography options like headings, subtitles, etc...
 export const defaultTheme = createTheme({
   palette: {
     primary: {
@@ -13,6 +11,21 @@ export const defaultTheme = createTheme({
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true,
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          boxShadow: "none",
+          borderRadius: 0,
+          ":hover": { boxShadow: "none" },
+        },
+        text: {
+          ":hover": { backgroundColor: "rgba(1, 30, 65, .04)" },
+        },
+        contained: {
+          ":hover": { backgroundColor: "rgba(1, 30, 65, .7)" },
+        },
       },
     },
   },
