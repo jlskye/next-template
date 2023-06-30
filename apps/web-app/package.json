@@ -26,6 +26,7 @@
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
     "@testing-library/react": "^14.0.0",
+    "@total-typescript/ts-reset": "^0.4.2",
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
     "@vitejs/plugin-react": "^4.0.0",
