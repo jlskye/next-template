@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import CssBaseline, { ThemeProvider, defaultTheme } from "ui-components/client";
 import { NextAppDirEmotionCacheProvider } from "./EmotionCache";

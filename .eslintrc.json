@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "rules": {
+    "max-len": ["error", { "code": 120, "ignoreUrls": true }],
+    "no-tabs": ["error"],
+    "quotes": ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": false }],
+    "comma-dangle": ["error", "always-multiline"],
+    "indent": ["error", 2],
+    "curly": ["error", "all"],
+    "semi": ["error", "always"]
+  }
+}
