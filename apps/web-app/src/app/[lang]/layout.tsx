@@ -3,9 +3,10 @@ import ThemeRegistry from "src/components/theme/ThemeRegistry";
 
 type Props = {
   params: { lang: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  // FIXME: seems a bug in nextjs
+  // searchParams: { [key: string]: string | string[] | undefined };
 };
-export async function generateMetadata({ params, searchParams }: Props, parent?: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata({ params }: Props, parent?: ResolvingMetadata): Promise<Metadata> {
   // const product = await fetch(`https://SEO.com`).then((res) => res.json());
 
   // optionally access and extend (rather than replace) parent metadata
