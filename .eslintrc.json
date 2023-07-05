@@ -18,7 +18,7 @@
       { "avoidEscape": true, "allowTemplateLiterals": false }
     ],
     "comma-dangle": ["error", "always-multiline"],
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "curly": ["error", "all"],
     "semi": ["error", "always"],
     "@typescript-eslint/no-unused-vars": "error"
