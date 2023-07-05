@@ -28,6 +28,30 @@ export const defaultTheme = createTheme({
         },
       },
     },
+    MuiAutocomplete: {
+      styleOverrides: {
+        root: {
+          boxShadow: "0px 4px 10px 0px rgba(0, 0, 0, 0.5)",
+          "& .MuiOutlinedInput-notchedOutline": {
+            border: "none",
+          },
+          "& .MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root']": {
+            padding: "12px 5px",
+            border: "none",
+            "& .MuiAutocomplete-input": {
+              padding: "0 0 0 15px",
+            },
+          },
+        },
+        popper: {
+          inset: "-1px auto auto 0px !important",
+        },
+        paper: {
+          borderRadius: 0,
+          boxShadow: "0px 4px 10px 0px rgba(0, 0, 0, 0.5)",
+        },
+      },
+    },
   },
   typography: {
     fontFamily: "Electrolux Sans,Microsoft YaHei,SimSun,Heiti SC,Roboto,Arial,sans-serif;",
