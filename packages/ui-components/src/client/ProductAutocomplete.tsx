@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MouseEventHandler, useRef } from "react";
+import { useRef } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MuiAutocomplete from "@mui/material/Autocomplete";
@@ -23,7 +23,7 @@ const GroupHeader = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
 }));
 
-const GroupFooter = () => {
+const GroupFooter = ({ searchResultUrl, inputValue }: { searchResultUrl: string; inputValue: string }) => {
   return (
     <Box
       sx={{
@@ -38,7 +38,7 @@ const GroupFooter = () => {
         },
       }}
     >
-      <a href={"https://google.com"}>
+      <a href={`${searchResultUrl}?text=${inputValue}`}>
         <Typography variant="subtitle1" color="text.primary" sx={{ fontWeight: 600 }}>
           View all results
         </Typography>
@@ -55,6 +55,9 @@ const GroupItem = ({
 }) => (
   <ListItem
     {...renderOptionProps}
+    onClick={() => {
+      window.location.assign(option.url);
+    }}
     sx={{
       padding: "20px",
       minHeight: "118px",
@@ -93,11 +96,7 @@ const GroupItem = ({
   </ListItem>
 );
 
-export default function ProductAutocomplete({
-  onIconClick,
-}: {
-  onIconClick: MouseEventHandler<HTMLDivElement> | undefined;
-}) {
+export default function ProductAutocomplete({ searchResultUrl }: { searchResultUrl: string }) {
   const [loading, setLoading] = React.useState(false);
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState<readonly AutocompleteOption[]>([]);
@@ -181,7 +180,9 @@ export default function ProductAutocomplete({
               endAdornment: (
                 <InputAdornment
                   position="end"
-                  onClick={onIconClick}
+                  onClick={() => {
+                    window.location.assign(searchResultUrl);
+                  }}
                   sx={{ ":hover": { cursor: "pointer", opacity: ".7" }, textAlign: "center", margin: "auto" }}
                 >
                   <SearchIcon />
@@ -207,7 +208,7 @@ export default function ProductAutocomplete({
               return (
                 <>
                   <GroupItem key={option.productModelId} renderOptionProps={props} option={option} />
-                  <GroupFooter key={"footer"} />
+                  <GroupFooter key={"footer"} searchResultUrl={searchResultUrl} inputValue={inputValue} />
                 </>
               );
             default:
