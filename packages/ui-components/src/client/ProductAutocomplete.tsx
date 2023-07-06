@@ -1,13 +1,13 @@
 import * as React from "react";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MuiAutocomplete from "@mui/material/Autocomplete";
-import { Grid, InputAdornment, ListItem, Typography } from "@mui/material";
+import { debounce, Grid, InputAdornment, ListItem, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/material/styles";
 
-interface AutocompleteOption {
+export interface AutocompleteOption {
   productModelId: string;
   productName: string;
   value: string;
@@ -96,41 +96,38 @@ const GroupItem = ({
   </ListItem>
 );
 
-export default function ProductAutocomplete({ searchResultUrl }: { searchResultUrl: string }) {
+export default function ProductAutocomplete({
+  searchResultUrl,
+  fetchOptions,
+}: {
+  searchResultUrl: string;
+  fetchOptions: ({ input }: { input: string }) => Promise<AutocompleteOption[] | undefined>;
+}) {
   const [loading, setLoading] = React.useState(false);
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState<readonly AutocompleteOption[]>([]);
   const containerElement = useRef(null);
-  const fetchOptions = ({ input }: { input: string }): Promise<AutocompleteOption[]> => {
-    console.log(input);
-    return Promise.resolve(top100Films);
-  };
+  const debouncedFetch = useMemo(
+    () =>
+      debounce(
+        (inputValue: string) =>
+          fetchOptions({ input: inputValue }).then((res) => {
+            setOptions(res ?? []);
+            setLoading(false);
+          }),
+        400,
+      ),
+    [fetchOptions],
+  );
 
   React.useEffect(() => {
-    let active = true;
-
     if (inputValue === "") {
       setOptions([]);
       return undefined;
     }
 
     setLoading(true);
-    fetchOptions({ input: inputValue }).then((res) => {
-      if (active) {
-        let newOptions: readonly any[] = [];
-
-        if (res) {
-          newOptions = [...newOptions, ...res];
-        }
-
-        setOptions(newOptions);
-        setLoading(false);
-      }
-    });
-
-    return () => {
-      active = false;
-    };
+    debouncedFetch(inputValue);
   }, [inputValue]);
 
   return (
@@ -189,60 +186,44 @@ export default function ProductAutocomplete({ searchResultUrl }: { searchResultU
                 </InputAdornment>
               ),
             }}
-            placeholder={"search..."}
+            placeholder="search..."
             fullWidth
           />
         )}
         renderOption={(props, option) => {
           const index = options.findIndex((x) => x.productModelId === option.productModelId);
 
-          switch (index) {
-            case 0:
-              return (
-                <>
-                  <GroupHeader key={"header"}>Products</GroupHeader>
-                  <GroupItem key={option.productModelId} renderOptionProps={props} option={option} />
-                </>
-              );
-            case options.length - 1:
-              return (
-                <>
-                  <GroupItem key={option.productModelId} renderOptionProps={props} option={option} />
-                  <GroupFooter key={"footer"} searchResultUrl={searchResultUrl} inputValue={inputValue} />
-                </>
-              );
-            default:
-              return <GroupItem key={option.productModelId} renderOptionProps={props} option={option} />;
+          if (index === 0 && options.length === 1) {
+            return (
+              <>
+                <GroupHeader key={"header"}>Products</GroupHeader>
+                <GroupItem key={option.productModelId} renderOptionProps={props} option={option} />
+                <GroupFooter key={"footer"} searchResultUrl={searchResultUrl} inputValue={inputValue} />
+              </>
+            );
           }
+
+          if (index === 0) {
+            return (
+              <>
+                <GroupHeader key={"header"}>Products</GroupHeader>
+                <GroupItem key={option.productModelId} renderOptionProps={props} option={option} />
+              </>
+            );
+          }
+
+          if (index === options.length - 1) {
+            return (
+              <>
+                <GroupItem key={option.productModelId} renderOptionProps={props} option={option} />
+                <GroupFooter key={"footer"} searchResultUrl={searchResultUrl} inputValue={inputValue} />
+              </>
+            );
+          }
+
+          return <GroupItem key={option.productModelId} renderOptionProps={props} option={option} />;
         }}
       />
     </Box>
   );
 }
-
-const top100Films: AutocompleteOption[] = [
-  {
-    productModelId: "YTH789689DN1",
-    productName: "The Shawshank Redemption",
-    value: "1994",
-    price: "$ 1,200",
-    imageUrl: "https://placehold.co/82x106",
-    url: "/product/1",
-  },
-  {
-    productModelId: "YTH789689DN2",
-    productName: "The Godfather",
-    value: "1972",
-    price: "$ 1,200",
-    imageUrl: "https://placehold.co/82x106",
-    url: "/product/1",
-  },
-  {
-    productModelId: "YTH789689DN3",
-    productName: "The Godfather: Part II",
-    value: "1974",
-    price: "$ 1,200",
-    imageUrl: "https://placehold.co/82x106",
-    url: "/product/1",
-  },
-];
