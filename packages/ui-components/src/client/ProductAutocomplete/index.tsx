@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import MuiAutocomplete from "@mui/material/Autocomplete";
-import { debounce } from "@mui/material";
+import { debounce, useTheme } from "@mui/material";
 import { ProductSearchInput } from "src/client/ProductAutocomplete/ProductSearchInput";
 import { OptionGroup } from "src/client/ProductAutocomplete/OptionGroup";
 
@@ -22,6 +22,7 @@ export default function ProductAutocomplete({
   fetchOptions: ({ input }: { input: string }) => Promise<AutocompleteOption[] | undefined>;
   width: string | number;
 }) {
+  const theme = useTheme();
   const [loading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState<readonly AutocompleteOption[]>([]);
@@ -50,7 +51,7 @@ export default function ProductAutocomplete({
   }, [inputValue]);
 
   return (
-    <Box ref={containerElement} key={"container"}>
+    <Box ref={containerElement}>
       {/* magic code for hiding box shadow */}
       <Box
         sx={{
@@ -58,8 +59,8 @@ export default function ProductAutocomplete({
           inset: "47px auto auto 0",
           width,
           height: 12,
-          backgroundColor: "#fff",
-          zIndex: 1301,
+          backgroundColor: theme.palette.background.default,
+          zIndex: theme.zIndex.modal + 1,
         }}
       />
       <MuiAutocomplete
