@@ -16,9 +16,11 @@ export interface AutocompleteOption {
 export default function ProductAutocomplete({
   searchResultUrl,
   fetchOptions,
+  width = 300,
 }: {
   searchResultUrl: string;
   fetchOptions: ({ input }: { input: string }) => Promise<AutocompleteOption[] | undefined>;
+  width: string | number;
 }) {
   const [loading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -48,24 +50,20 @@ export default function ProductAutocomplete({
   }, [inputValue]);
 
   return (
-    <Box
-      sx={{
-        width: 300,
-      }}
-      ref={containerElement}
-    >
+    <Box ref={containerElement} key={"container"}>
       {/* magic code for hiding box shadow */}
       <Box
         sx={{
           position: "relative",
           inset: "47px auto auto 0",
+          width,
           height: 12,
           backgroundColor: "#fff",
           zIndex: 1301,
         }}
       />
       <MuiAutocomplete
-        sx={{ width: 300 }}
+        sx={{ width }}
         componentsProps={{
           paper: {
             sx: {
@@ -81,14 +79,14 @@ export default function ProductAutocomplete({
         options={options}
         autoComplete
         freeSolo
-        filterSelectedOptions
         loading={loading}
-        onInputChange={(event, newInputValue) => {
+        onInputChange={(_, newInputValue) => {
           setInputValue(newInputValue);
         }}
         renderInput={(params) => <ProductSearchInput params={params} searchResultUrl={searchResultUrl} />}
         renderOption={(props, option) => (
           <OptionGroup
+            key={option.productModelId}
             options={options}
             renderProps={props}
             currentOption={option}
