@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import ProductAutocomplete, { AutocompleteOption } from "src/client/ProductAutocomplete";
+import { ProductAutocomplete, ProductAutocompleteOption } from "src/client/ProductAutocomplete";
 
 const meta = {
   title: "Client/Autocomplete",
@@ -13,14 +13,15 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    fetchOptions: async ({ input }: { input: string }): Promise<AutocompleteOption[] | undefined> => {
+    fetchOptions: async ({ input }: { input: string }): Promise<ProductAutocompleteOption[] | undefined> => {
       return Promise.resolve(top100Films);
     },
     searchResultUrl: "/search",
+    width: 300,
   },
 };
 
-const top100Films: AutocompleteOption[] = [
+const top100Films: ProductAutocompleteOption[] = [
   {
     productModelId: "123",
     productName: "The Shawshank Redemption",

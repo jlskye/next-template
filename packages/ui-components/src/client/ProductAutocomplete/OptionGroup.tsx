@@ -2,7 +2,7 @@ import { GroupHeader } from "src/client/ProductAutocomplete/GroupHeader";
 import { GroupItem } from "src/client/ProductAutocomplete/GroupItem";
 import { GroupFooter } from "src/client/ProductAutocomplete/GroupFooter";
 import React from "react";
-import { AutocompleteOption } from "src/client/ProductAutocomplete/index";
+import { ProductAutocompleteOption } from "src/client/ProductAutocomplete/index";
 
 export const OptionGroup = ({
   renderProps,
@@ -12,8 +12,8 @@ export const OptionGroup = ({
   inputValue,
 }: {
   renderProps: React.HTMLAttributes<HTMLLIElement>;
-  currentOption: AutocompleteOption;
-  options: readonly AutocompleteOption[];
+  currentOption: ProductAutocompleteOption;
+  options: readonly ProductAutocompleteOption[];
   searchResultUrl: string;
   inputValue: string;
 }) => {

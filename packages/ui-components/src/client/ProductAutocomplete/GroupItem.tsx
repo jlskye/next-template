@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Grid, ListItem, Typography, useTheme } from "@mui/material";
-import { AutocompleteOption } from "src/client/ProductAutocomplete/index";
+import { ProductAutocompleteOption } from "src/client/ProductAutocomplete/index";
 
 export const GroupItem = ({
   renderOptionProps,
   option,
 }: {
   renderOptionProps: React.HTMLAttributes<HTMLLIElement>;
-  option: AutocompleteOption;
+  option: ProductAutocompleteOption;
 }) => {
   const theme = useTheme();
 
